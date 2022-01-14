@@ -16,9 +16,13 @@ typedef struct{
 	uint8_t PIN;
 }BTN_t;
 
-uint8_t BTN_u8Init(const BTN_t* btn);
+typedef enum{
+	BTN_ERR,
+	BTN_OK
+}BTN_ERR_STATE;
+BTN_ERR_STATE BTN_u8Init(const BTN_t* btn);
 
-uint8_t BTN_u8State(const BTN_t* btn, uint8_t* pressed);
+BTN_ERR_STATE BTN_u8State(const BTN_t* btn, uint8_t* pressed);
 
 
 

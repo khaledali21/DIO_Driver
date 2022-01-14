@@ -9,18 +9,46 @@
 #include "LED.h"
 
 
-uint8_t LED_u8Init(const LED_t* led){
-	return DIO_u8SetPinDirection(led->PORT, led->PIN, OUTPUT_PIN);
+LED_ERR_STATE LED_u8Init(const LED_t* led){
+	LED_ERR_STATE state = LED_OK;
+	if(led == NULL){
+		state = LED_ERR;
+	}
+	else{
+		state = DIO_u8SetPinDirection(led->PORT, led->PIN, OUTPUT_PIN);
+	}
+	return state;
 }
 
-uint8_t LED_u8ON(const LED_t* led){
-	return DIO_u8SetPinData(led->PORT, led->PIN, HIGH);
+LED_ERR_STATE LED_u8ON(const LED_t* led){
+	LED_ERR_STATE state = LED_OK;
+	if(led == NULL){
+		state = LED_ERR;
+	}
+	else{
+		state = DIO_u8SetPinData(led->PORT, led->PIN, HIGH);
+	}
+	return state;
 }
 
-uint8_t LED_u8OFF(const LED_t* led){
-	return DIO_u8SetPinData(led->PORT, led->PIN, LOW);
+LED_ERR_STATE LED_u8OFF(const LED_t* led){
+	LED_ERR_STATE state = LED_OK;
+	if(led == NULL){
+		state = LED_ERR;
+	}
+	else{
+		state = DIO_u8SetPinData(led->PORT, led->PIN, LOW);
+	}
+	return state;
 }
 
-uint8_t LED_u8TOGGLE(const LED_t* led){
-	return DIO_u8TogglePinData(led->PORT, led->PIN);
+LED_ERR_STATE LED_u8TOGGLE(const LED_t* led){
+	LED_ERR_STATE state = LED_OK;
+	if(led == NULL){
+		state = LED_ERR;
+	}
+	else{
+		state = DIO_u8TogglePinData(led->PORT, led->PIN);
+	}
+	return state;
 }
