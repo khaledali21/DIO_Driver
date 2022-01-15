@@ -16,7 +16,12 @@
 #include "DIO.h"
 
 
-
+/*
+* brief: This function is used to set the direction of the given port to input or output
+* param.: (input) the port that will be used
+* param.: (input) the direction to be set and setup pull up resistance or not in case the direction is input
+* return: (output) the Error state of the function 0 if an error happens and 1 otherwise
+*/
 DIO_ERR_STATE DIO_u8SetPortDirection(PORT_u8 port, DIR_u8 dir){
 	DIO_ERR_STATE state = DIO_OK;
 	switch(port){
@@ -94,7 +99,13 @@ DIO_ERR_STATE DIO_u8SetPortDirection(PORT_u8 port, DIR_u8 dir){
 	}
 	return state;
 }
-
+/*
+* brief: This function is used to set the direction of the given pin to input or output
+* param.: (input) the port containing the pin
+* param.: (input) the pin that will be used
+* param.: (input) the direction to be set and setup pull up resistance or not in case the direction is input
+* return: (output) the Error state of the function 0 if an error happens and 1 otherwise
+*/
 DIO_ERR_STATE DIO_u8SetPinDirection(PORT_u8 port, PIN_u8 pin, DIR_u8 dir){
 	DIO_ERR_STATE state = DIO_OK;
 	if(pin > PIN7 || pin < PIN0){
@@ -177,7 +188,12 @@ DIO_ERR_STATE DIO_u8SetPinDirection(PORT_u8 port, PIN_u8 pin, DIR_u8 dir){
 	}
 	return state;
 }
-
+/*
+* brief: This function is used to set the value of the given port
+* param.: (input) the port that will be used
+* param.: (input) the value to be assigned to the given port
+* return: (output) the Error state of the function 0 if an error happens and 1 otherwise
+*/
 DIO_ERR_STATE DIO_u8SetPortData(PORT_u8 port, VAL_u8 Data){
 	DIO_ERR_STATE state = DIO_OK;
 	switch(port){
@@ -200,7 +216,13 @@ DIO_ERR_STATE DIO_u8SetPortData(PORT_u8 port, VAL_u8 Data){
 
 	return state;
 }
-
+/*
+* brief: This function is used to set the value of the given pin
+* param.: (input) the port containing the pin
+* param.: (input) the pin that will be used
+* param.: (input) the value to set the pin to
+* return: (output) the Error state of the function 0 if an error happens and 1 otherwise
+*/
 DIO_ERR_STATE DIO_u8SetPinData(PORT_u8 port, PIN_u8 pin, VAL_u8 Data){
 	DIO_ERR_STATE state = DIO_OK;
 	if(pin > PIN7 || pin < PIN0){
@@ -259,7 +281,12 @@ DIO_ERR_STATE DIO_u8SetPinData(PORT_u8 port, PIN_u8 pin, VAL_u8 Data){
 	}
 	return state;
 }
-
+/*
+* brief: This function is used to get the value of the given port
+* param.: (input) the port that will be used
+* param.: (input) a pointer to a variable to contain the value of the given port
+* return: (output) the Error state of the function 0 if an error happens and 1 otherwise
+*/
 DIO_ERR_STATE DIO_u8GetPortData(PORT_u8 port, uint8_t* Data){
 	DIO_ERR_STATE state = DIO_OK;
 	if(Data == NULL){
@@ -286,7 +313,13 @@ DIO_ERR_STATE DIO_u8GetPortData(PORT_u8 port, uint8_t* Data){
 	}
 	return state;
 }
-
+/*
+* brief: This function is used to get the value of the given pin
+* param.: (input) the port containing the pin
+* param.: (input) the pin that will be used
+* param.: (input) a pointer to a variable to contain the value of the pin
+* return: (output) the Error state of the function 0 if an error happens and 1 otherwise
+*/
 DIO_ERR_STATE DIO_u8GetPinData(PORT_u8 port, PIN_u8 pin, uint8_t* Data){
 	DIO_ERR_STATE state = DIO_OK;
 	if(Data == NULL || pin > PIN7 || pin < PIN0){
@@ -313,7 +346,11 @@ DIO_ERR_STATE DIO_u8GetPinData(PORT_u8 port, PIN_u8 pin, uint8_t* Data){
 	}
 	return state;
 }
-
+/*
+* brief: This function is used to toggle the value of the given port
+* param.: (input) the port that will be used
+* return: (output) the Error state of the function 0 if an error happens and 1 otherwise
+*/
 DIO_ERR_STATE DIO_u8TogglePortData(PORT_u8 port){
 	DIO_ERR_STATE state = DIO_OK;
 	switch(port){
@@ -335,7 +372,12 @@ DIO_ERR_STATE DIO_u8TogglePortData(PORT_u8 port){
 	}
 	return state;
 }
-
+/*
+* brief: This function is used to toggle the state of the given pin
+* param.: (input) the port containing the pin
+* param.: (input) the pin that will be used
+* return: (output) the Error state of the function 0 if an error happens and 1 otherwise
+*/
 DIO_ERR_STATE DIO_u8TogglePinData(PORT_u8 port, PIN_u8 pin){
 	DIO_ERR_STATE state = DIO_OK;
 	if(pin > PIN7 || pin < PIN0){

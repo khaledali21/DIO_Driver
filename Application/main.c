@@ -31,7 +31,9 @@ int main(void){
 		}
 	}
 }
-
+/*
+* brief: This function is a callback Function to check if Button 0 is pressed or not, if it's pressed LED 0 is toggled
+*/
 void btn0_callBack(void){
 	uint8_t pressed;
 	uint8_t status = BTN_u8State(&btn0, &pressed);
@@ -41,7 +43,9 @@ void btn0_callBack(void){
 		}	
 	}
 }
-
+/*
+* brief: This function is called when an error occurs it turns on a led for indication and then traps the program in an infinite loop
+*/
 void errorHandler(void){
 	LED_u8ON(&led_err);
 	while(1); //trap program

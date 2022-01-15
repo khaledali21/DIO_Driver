@@ -8,7 +8,11 @@
 
 #include "LED.h"
 
-
+/*
+* brief: This function is used to initialize the DIO pin as output for the led by calling DIO driver
+* param.: (input) a pointer to a led structure describing which port and pin will be used
+* return: (output) the Error state of the function 0 if an error happens and 1 otherwise
+*/
 LED_ERR_STATE LED_u8Init(const LED_t* led){
 	LED_ERR_STATE state = LED_OK;
 	if(led == NULL){
@@ -19,7 +23,11 @@ LED_ERR_STATE LED_u8Init(const LED_t* led){
 	}
 	return state;
 }
-
+/*
+* brief: This function is used to turn the led on
+* param.: (input) a pointer to a led structure describing which port and pin will be used
+* return: (output) the Error state of the function 0 if an error happens and 1 otherwise
+*/
 LED_ERR_STATE LED_u8ON(const LED_t* led){
 	LED_ERR_STATE state = LED_OK;
 	if(led == NULL){
@@ -30,7 +38,11 @@ LED_ERR_STATE LED_u8ON(const LED_t* led){
 	}
 	return state;
 }
-
+/*
+* brief: This function is used to turn the led off
+* param.: (input) a pointer to a led structure describing which port and pin will be used
+* return: (output) the Error state of the function 0 if an error happens and 1 otherwise
+*/
 LED_ERR_STATE LED_u8OFF(const LED_t* led){
 	LED_ERR_STATE state = LED_OK;
 	if(led == NULL){
@@ -41,7 +53,11 @@ LED_ERR_STATE LED_u8OFF(const LED_t* led){
 	}
 	return state;
 }
-
+/*
+* brief: This function is used to toggle the current state of the led
+* param.: (input) a pointer to a led structure describing which port and pin will be used
+* return: (output) the Error state of the function 0 if an error happens and 1 otherwise
+*/
 LED_ERR_STATE LED_u8TOGGLE(const LED_t* led){
 	LED_ERR_STATE state = LED_OK;
 	if(led == NULL){

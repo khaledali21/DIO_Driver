@@ -10,13 +10,23 @@
 static uint16_t volatile compare;
 static uint16_t volatile counter;
 static DELAY delay_stat = DELAY_OK;
-static void (*delayCallBack)(void);
+static void (*delayCallBack)(void); // a pointer to a function that will be called when the delay is finished
 
+
+/*
+* brief: This function is used to initialize Timer 0 to use CTC mode and 64 prescaler
+* return: (output) the Error state of the function 0 if an error happens and 1 otherwise
+*/
 uint8_t TIMER0_u8Init(void){
 	TCCR0_REG = (1 << WGM01) | (1<<CS01) | (1 << CS00);
 	return DELAY_OK;
 }
-
+/*
+* brief: This function is used to initialize an interrupt delay if the Timer isn't busy
+* param.: (input) the delay to be set in ms
+* param.: (input) a pointer to a function to be called when the delay is over
+* return: (output) the Error state of the function 0 if an error happens, 2 if the timer is busy and 1 otherwise
+*/
 uint8_t TIMER0_u8InterruptDelay(uint16_t delay, void (*fnCallBack)(void)){
 	if(delay_stat == DELAY_BUSY){
 		return delay_stat;
@@ -35,7 +45,11 @@ uint8_t TIMER0_u8InterruptDelay(uint16_t delay, void (*fnCallBack)(void)){
 	}
 }
 
-
+/*
+* brief: This function is used to initialize a polling delay if the Timer isn't busy
+* param.: (input) the delay to be set in ms
+* return: (output) the Error state of the function 0 if an error happens, 2 if the timer is busy and 1 otherwise
+*/
 uint8_t TIMER0_u8PollingDelay(uint16_t delay){
 	if(delay_stat == DELAY_BUSY){
 		return delay_stat;
